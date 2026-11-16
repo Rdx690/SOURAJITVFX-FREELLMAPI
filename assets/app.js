@@ -42,5 +42,5 @@ $('newChat').addEventListener('click',()=>{history=[];localStorage.removeItem(HI
 document.querySelectorAll('[data-prompt]').forEach(b=>b.addEventListener('click',()=>{promptBox.value=b.dataset.prompt;promptBox.focus()}));
 $('settingsBtn').addEventListener('click',()=>{const c=readCfg();$('gatewayUrl').value=c.url;$('gatewayKey').value=c.key;$('settings').showModal()});
 $('saveSettings').addEventListener('click',()=>{localStorage.setItem('gatewayUrl',$('gatewayUrl').value.trim()||DEFAULT_URL);localStorage.setItem('gatewayKey',$('gatewayKey').value.trim());$('settings').close();loadModels()});
-$('testConnection').addEventListener('click',async()=>{localStorage.setItem('gatewayUrl',$('gatewayUrl').value.trim()||DEFAULT_URL);localStorage.setItem('gatewayKey',$('gatewayKey').value.trim());$('settingsStatus').textContent='Testing…';await restoreHistory();loadModels();$('settingsStatus').textContent=$('connection').textContent==='Connected'?'Connection successful.':'Could not connect. Check URL and key.'});
-loadModels();
+$('testConnection').addEventListener('click',async()=>{localStorage.setItem('gatewayUrl',$('gatewayUrl').value.trim()||DEFAULT_URL);localStorage.setItem('gatewayKey',$('gatewayKey').value.trim());$('settingsStatus').textContent='Testing…';await loadModels();$('settingsStatus').textContent=$('connection').textContent==='Connected'?'Connection successful.':'Could not connect. Check URL and key.'});
+restoreHistory();loadModels();
