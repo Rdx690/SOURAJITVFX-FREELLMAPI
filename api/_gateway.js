@@ -11,6 +11,10 @@ function getGateway(req) {
   if (!auth.startsWith('Bearer ') || auth.length < 12) {
     const e = new Error('Missing API key.'); e.status = 401; throw e;
   }
-  return { url: raw.replace(/\\/+$/, ''), auth };
+  // Accept either OpenRouter base URL form: https://openrouter.ai/api or /api/v1.
+  // API handlers append /v1/... themselves, so remove a trailing /v1 to avoid /api/v1/v1/... (404).
+  const pathname = parsed.pathname.replace(/\/+$/, '').replace(/\/v1$/i, '');
+  const url = parsed.origin + pathname;
+  return { url, auth };
 }
 module.exports = { getGateway };
