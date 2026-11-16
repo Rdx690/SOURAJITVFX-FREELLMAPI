@@ -1,0 +1,7 @@
+SOURAJITVFX-FREELLMAPI DEPLOY CHECKLIST
+[ ] Deploy FreeLLMAPI image on Render; set PORT=3001 and a stable ENCRYPTION_KEY.
+[ ] Complete FreeLLMAPI admin setup; add provider keys; copy unified API key.
+[ ] Import this repo into Vercel (Other framework, root directory ./).
+[ ] Open deployed UI > gear > set HTTPS Render URL + unified API key > Test connection.
+[ ] Select a model and send a test message.
+WARNING: Render Free has ephemeral storage; SQLite/provider keys can be lost on restart/redeploy. Use paid persistent disk at /app/server/data for persistence.
