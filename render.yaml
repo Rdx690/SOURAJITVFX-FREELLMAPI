@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sourajitvfx-freellmapi
+    runtime: image
+    image:
+      url: ghcr.io/tashfeenahmed/freellmapi:latest
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: "3001"
+      - key: NODE_ENV
+        value: production
+      - key: ENCRYPTION_KEY
+        generateValue: true
